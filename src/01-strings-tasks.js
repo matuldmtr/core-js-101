@@ -109,7 +109,7 @@ function removeLeadingAndTrailingWhitespaces(value) {
  */
 function repeatString(value, count) {
   let result = '';
-  for (let i = 1; i < count; i++) {
+  for (let i = 1; i < count; i += 1) {
     result += value;
   }
   return result;
@@ -222,8 +222,75 @@ function getRectangleString(/* width, height */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  const alphabet = [
+    'A',
+    'a',
+    'B',
+    'b',
+    'C',
+    'c',
+    'D',
+    'd',
+    'E',
+    'e',
+    'F',
+    'f',
+    'G',
+    'g',
+    'H',
+    'h',
+    'I',
+    'i',
+    'J',
+    'j',
+    'K',
+    'k',
+    'L',
+    'l',
+    'M',
+    'm',
+    'N',
+    'n',
+    'O',
+    'o',
+    'P',
+    'p',
+    'Q',
+    'q',
+    'R',
+    'r',
+    'S',
+    's',
+    'T',
+    't',
+    'U',
+    'u',
+    'V',
+    'v',
+    'W',
+    'w',
+    'X',
+    'x',
+    'Y',
+    'y',
+    'Z',
+    'z',
+  ];
+
+  const coded = [];
+
+  str.split('').map((letter) => {
+    let index = alphabet.indexOf(letter) + 26;
+
+    index > alphabet.length ? (index -= alphabet.length) : index;
+
+    alphabet.includes(letter)
+      ? coded.push(alphabet[index])
+      : coded.push(letter);
+  });
+
+  return coded.join('');
 }
 
 /**
