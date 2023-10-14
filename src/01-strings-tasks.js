@@ -64,7 +64,8 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
-  return value.replace(/^\w{5}./, '').replace(/.$/, '');
+  const result = value.replace(/^\D{6}./, '').replace(/.$/, '');
+  return result;
 }
 
 /**
@@ -109,7 +110,7 @@ function removeLeadingAndTrailingWhitespaces(value) {
  */
 function repeatString(value, count) {
   let result = '';
-  for (let i = 1; i < count; i += 1) {
+  for (let i = 0; i < count; i += 1) {
     result += value;
   }
   return result;
@@ -221,7 +222,69 @@ function getRectangleString(/* width, height */) {}
  *
  */
 function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+  // const alphabet = [
+  //   'A',
+  //   'a',
+  //   'B',
+  //   'b',
+  //   'C',
+  //   'c',
+  //   'D',
+  //   'd',
+  //   'E',
+  //   'e',
+  //   'F',
+  //   'f',
+  //   'G',
+  //   'g',
+  //   'H',
+  //   'h',
+  //   'I',
+  //   'i',
+  //   'J',
+  //   'j',
+  //   'K',
+  //   'k',
+  //   'L',
+  //   'l',
+  //   'M',
+  //   'm',
+  //   'N',
+  //   'n',
+  //   'O',
+  //   'o',
+  //   'P',
+  //   'p',
+  //   'Q',
+  //   'q',
+  //   'R',
+  //   'r',
+  //   'S',
+  //   's',
+  //   'T',
+  //   't',
+  //   'U',
+  //   'u',
+  //   'V',
+  //   'v',
+  //   'W',
+  //   'w',
+  //   'X',
+  //   'x',
+  //   'Y',
+  //   'y',
+  //   'Z',
+  //   'z',
+  // ];
+  // const coded = [];
+  // str.split('').map((letter) => {
+  //   let index = alphabet.indexOf(letter) + 26;
+  //   index > alphabet.length ? (index -= alphabet.length) : index;
+  //   alphabet.includes(letter)
+  //     ? coded.push(alphabet[index])
+  //     : coded.push(letter);
+  // });
+  // return coded.join('');
 }
 
 /**
@@ -265,8 +328,67 @@ function isString(/* value */) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  const array = [
+    'A♣',
+    '2♣',
+    '3♣',
+    '4♣',
+    '5♣',
+    '6♣',
+    '7♣',
+    '8♣',
+    '9♣',
+    '10♣',
+    'J♣',
+    'Q♣',
+    'K♣',
+    'A♦',
+    '2♦',
+    '3♦',
+    '4♦',
+    '5♦',
+    '6♦',
+    '7♦',
+    '8♦',
+    '9♦',
+    '10♦',
+    'J♦',
+    'Q♦',
+    'K♦',
+    'A♥',
+    '2♥',
+    '3♥',
+    '4♥',
+    '5♥',
+    '6♥',
+    '7♥',
+    '8♥',
+    '9♥',
+    '10♥',
+    'J♥',
+    'Q♥',
+    'K♥',
+    'A♠',
+    '2♠',
+    '3♠',
+    '4♠',
+    '5♠',
+    '6♠',
+    '7♠',
+    '8♠',
+    '9♠',
+    '10♠',
+    'J♠',
+    'Q♠',
+    'K♠',
+  ];
+
+  const result = array.includes(value)
+    ? array.indexOf(value)
+    : `Invalid id for card '${value}':`;
+
+  return result;
 }
 
 module.exports = {
