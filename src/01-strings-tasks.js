@@ -203,7 +203,9 @@ function extractEmails(str) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(/* width, height */) {}
+function getRectangleString(/* width, height */) {
+  throw new Error('Not implemented');
+}
 
 /**
  * Encode specified string with ROT13 cipher
@@ -221,70 +223,72 @@ function getRectangleString(/* width, height */) {}
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  // const alphabet = [
-  //   'A',
-  //   'a',
-  //   'B',
-  //   'b',
-  //   'C',
-  //   'c',
-  //   'D',
-  //   'd',
-  //   'E',
-  //   'e',
-  //   'F',
-  //   'f',
-  //   'G',
-  //   'g',
-  //   'H',
-  //   'h',
-  //   'I',
-  //   'i',
-  //   'J',
-  //   'j',
-  //   'K',
-  //   'k',
-  //   'L',
-  //   'l',
-  //   'M',
-  //   'm',
-  //   'N',
-  //   'n',
-  //   'O',
-  //   'o',
-  //   'P',
-  //   'p',
-  //   'Q',
-  //   'q',
-  //   'R',
-  //   'r',
-  //   'S',
-  //   's',
-  //   'T',
-  //   't',
-  //   'U',
-  //   'u',
-  //   'V',
-  //   'v',
-  //   'W',
-  //   'w',
-  //   'X',
-  //   'x',
-  //   'Y',
-  //   'y',
-  //   'Z',
-  //   'z',
-  // ];
-  // const coded = [];
-  // str.split('').map((letter) => {
-  //   let index = alphabet.indexOf(letter) + 26;
-  //   index > alphabet.length ? (index -= alphabet.length) : index;
-  //   alphabet.includes(letter)
-  //     ? coded.push(alphabet[index])
-  //     : coded.push(letter);
-  // });
-  // return coded.join('');
+function encodeToRot13(str) {
+  const alphabet = [
+    'A',
+    'a',
+    'B',
+    'b',
+    'C',
+    'c',
+    'D',
+    'd',
+    'E',
+    'e',
+    'F',
+    'f',
+    'G',
+    'g',
+    'H',
+    'h',
+    'I',
+    'i',
+    'J',
+    'j',
+    'K',
+    'k',
+    'L',
+    'l',
+    'M',
+    'm',
+    'N',
+    'n',
+    'O',
+    'o',
+    'P',
+    'p',
+    'Q',
+    'q',
+    'R',
+    'r',
+    'S',
+    's',
+    'T',
+    't',
+    'U',
+    'u',
+    'V',
+    'v',
+    'W',
+    'w',
+    'X',
+    'x',
+    'Y',
+    'y',
+    'Z',
+    'z',
+  ];
+  const coded = [];
+  str.split('').map((letter) => {
+    let index = alphabet.indexOf(letter) + 26;
+    if (index > alphabet.length) {
+      index -= alphabet.length;
+    }
+    return alphabet.includes(letter)
+      ? coded.push(alphabet[index])
+      : coded.push(letter);
+  });
+  return coded.join('');
 }
 
 /**
