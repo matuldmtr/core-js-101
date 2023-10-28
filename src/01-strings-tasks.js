@@ -281,7 +281,7 @@ function encodeToRot13(str) {
   const coded = [];
   str.split('').map((letter) => {
     let index = alphabet.indexOf(letter) + 26;
-    if (index > alphabet.length) {
+    if (index > alphabet.length - 1) {
       index -= alphabet.length;
     }
     return alphabet.includes(letter)
@@ -304,8 +304,8 @@ function encodeToRot13(str) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  return value instanceof String || typeof value === 'string';
 }
 
 /**
